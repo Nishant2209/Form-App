@@ -24,14 +24,9 @@ const theme = createTheme({
   },
 });
 const Data: React.FC = () => {
-  const user = localStorage.getItem("user");
-  const userData = JSON.parse(user);
+  const user = JSON.parse(localStorage.getItem("user") || "{}");
 
-  if (
-    !userData.name.length ||
-    !userData.phone.length ||
-    !userData.email.length
-  ) {
+  if (!user.name.length || !user.phone.length || !user.email.length) {
     const [open, setOpen] = React.useState(true);
     const navigate = useNavigate();
     const handleClose = () => {
